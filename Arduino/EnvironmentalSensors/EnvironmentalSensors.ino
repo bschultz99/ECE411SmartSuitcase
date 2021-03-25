@@ -7,7 +7,7 @@ Adafruit_SGP30 sgp;
 Adafruit_VEML6070 uv = Adafruit_VEML6070();
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(9600);
   while (!Serial) { delay(10); }
   Serial.println("Sensor test");
   if (! sgp.begin()){

@@ -4,7 +4,7 @@
 Adafruit_VEML6070 uv = Adafruit_VEML6070();
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(9600);
   Serial.println("VEML6070 Test");
   uv.begin(VEML6070_1_T);  // pass in the integration time constant
 }
