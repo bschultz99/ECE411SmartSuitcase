@@ -38,7 +38,7 @@ class MyServer(BaseHTTPRequestHandler):
             </html>
         '''
         self.do_HEAD()
-                status = ''
+        status = ''
         if self.path=='/':
             GPIO.setmode(GPIO.BCM)
             GPIO.setwarnings(False)
