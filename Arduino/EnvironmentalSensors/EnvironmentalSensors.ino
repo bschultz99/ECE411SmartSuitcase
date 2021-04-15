@@ -1,7 +1,9 @@
 #include <Wire.h>
 #include "Adafruit_VEML6070.h" //UV Sensor
 #include "Adafruit_SGP30.h" //Gas Sensor
+#include "DHT.h"
 
+DHT dht(2, DHT11);
 Adafruit_SGP30 sgp;
 
 Adafruit_VEML6070 uv = Adafruit_VEML6070();
@@ -13,11 +15,17 @@ void setup() {
     Serial.println("Sensor not found :(");
     while (1);
   }
+  dht.begin();
   uv.begin(VEML6070_1_T);
 }
 
 void loop() {
-  
+  float h = dht.readHumidity();
+  float t = dht.readTemperature();
+  if( isnan(h) || isnan(t)){
+    Serial.println("DHT Failed");
+    return;
+  }
   if (! sgp.IAQmeasure()) {
     Serial.println("Measurement failed");
     return;
@@ -33,4 +41,6 @@ void loop() {
   delay(1000);
   Serial.print("UV light level: "); Serial.println(uv.readUV()); //UV light level
   delay(1000);
+  Serial.print("Humidity: "); Serial.print(h); Serial.println(""); //Humidity
+  Serial.print("Temperature: "); Serial.print(t); Serial.println(""); //Temperature
 }
