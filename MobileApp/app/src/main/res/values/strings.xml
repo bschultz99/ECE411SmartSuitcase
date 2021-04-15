@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Smart Suitcase</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="temperature">Temperature:</string>
+    <string name="pressure">Pressure:</string>
+    <string name="humidity">Humidity:</string>
+    <string name="uv">UV:</string>
+    <string name="gas">Gas:</string>
+    <string name="temperatureview">74 C</string>
+    <string name="pressureview">101330 Pa</string>
+    <string name="humidityview">33%</string>
+    <string name="uvview">5</string>
+    <string name="gasview">TVOC 65 ppb  eCO2 400 ppm</string>
+    <string name="freezebutton">Freeze</string>
+    <string name="clearbutton">Clear</string>
+    <string name="pingbutton">Ping</string>
+</resources>
