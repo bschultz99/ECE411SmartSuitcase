@@ -2,7 +2,6 @@
 import serial
 
 if __name__ == '__main__':
-<<<<<<< HEAD
     ser1 = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
     ser2 = serial.Serial('/dev/rfcomm0')
     ser1.flush()
@@ -19,12 +18,3 @@ if __name__ == '__main__':
         
 
         
-=======
-    ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1) #Set the serial port to be ttyUSB0 at a baudrate of 9600
-    ser.flush() #Wait till data is written
-
-    while True:
-        if ser.in_waiting > 0:
-            line = ser.readline().decode('latin-1').rstrip() #Read
-            print(line)
->>>>>>> 958469a4f4c04b9074539a3b53f49bc556463e9f
