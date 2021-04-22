@@ -5,6 +5,7 @@ if __name__ == '__main__':
     ser1 = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
     ser2 = serial.Serial('/dev/rfcomm0')
     ser1.flush()
+    ser2.flush()
     phone = ""
     arduinio = ""
     mode = 1 # 1 = Brake 0 = Coast
