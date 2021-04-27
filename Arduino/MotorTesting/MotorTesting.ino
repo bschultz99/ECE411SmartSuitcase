@@ -44,8 +44,8 @@ void setup() {
   
   //Speeds
   PWMTurn = 25;
-  PWMMin = 10;
-  PWMMax = 20;
+  PWMMin = 20;
+  PWMMax = 35;
 
 
   /*/Pin Settings
@@ -98,68 +98,84 @@ void loop() {
     Serial.println(area); //just printing them out to test
 */
   //Translational
-  forwardSpeed = (((y - yMin)*(PWMMax - PWMMin))/(yMax - yMin)) + PWMMin;
-  // otherSpeed = formula
-  if( y > yBottom && y < yTop && x > xLeft && x < xRight){
-    //Don't change anything
-  }else{
-    if(y > yMin && x < xLeft ){ //Forward Left
-      //Left Motor
-      analogWrite(6,forwardSpeed);
-      digitalWrite(7,HIGH);
-      digitalWrite(8,LOW);
-      //Right Motor
-      analogWrite(9,forwardSpeed);
-      digitalWrite(10,HIGH);
-      digitalWrite(11,LOW);
-    }else if(y > yMin && x > xRight ){ //Forward Right
-      //Left Motor
-      analogWrite(6,forwardSpeed);
-      digitalWrite(7,HIGH);
-      digitalWrite(8,LOW);
-      //Right Motor
-      analogWrite(9,forwardSpeed);
-      digitalWrite(10,HIGH);
-      digitalWrite(11,LOW);
-    }else if(y> yMin){ //Forward
-      //Left Motor
-      analogWrite(6,forwardSpeed);
-      digitalWrite(7,HIGH);
-      digitalWrite(8,LOW);
-      //Right Motor
-      analogWrite(9,forwardSpeed);
-      digitalWrite(10,HIGH);
-      digitalWrite(11,LOW);  
-    }
+  forwardSpeed = 20;
     //Stationary Orientation
-    if(y < yMin && x < xLeft){//Left Turn
+    if(x < 130 && y < 100){//Stationary Left Turn
       //Left Motor
-      analogWrite(6,PWMTurn);
-      digitalWrite(7,HIGH);
-      digitalWrite(8,LOW);
-      //Right Motor
-      analogWrite(9,PWMTurn);
-      digitalWrite(10,LOW);
-      digitalWrite(11,HIGH);
-    }else if(y < yMin && x > xRight){//Right Turn
-      //Left Motor
-      analogWrite(6,PWMTurn);
+      analogWrite(6,forwardSpeed);
       digitalWrite(7,LOW);
       digitalWrite(8,HIGH);
       //Right Motor
-      analogWrite(9,PWMTurn);
+      analogWrite(9,forwardSpeed);
+      digitalWrite(10,LOW);
+      digitalWrite(11,HIGH);
+    }else if(x > 190 && y > 140){//Stationary Right Turn
+      //Left Motor
+      analogWrite(6,forwardSpeed);
+      digitalWrite(7,HIGH);
+      digitalWrite(8,LOW);
+      //Right Motor
+      analogWrite(9,forwardSpeed);
       digitalWrite(10,HIGH);
-      digitalWrite(11,LOW);
-//    }else{//Float
-//      //Left Motor
-//      analogWrite(6,0);
-//      digitalWrite(7,HIGH);
-//      digitalWrite(8,HIGH);
-//      //Right Motor
-//      analogWrite(9,0);
-//      digitalWrite(10,HIGH);
-//      digitalWrite(11,HIGH);  
-    }
-   }
+      digitalWrite(11,LOW); 
+   }else if(y < 100 && x > 130 && x < 190){ //Stop   
+     analogWrite(6,0);
+      digitalWrite(7,LOW);
+      digitalWrite(8,HIGH);
+      //Right Motor
+      analogWrite(9,0);
+      digitalWrite(10,HIGH);
+      digitalWrite(11,LOW); 
+   }else if( y > 140 && x < 130){ //Fast left Turn
+      analogWrite(6,30);
+      digitalWrite(7,LOW);
+      digitalWrite(8,HIGH);
+      //Right Motor
+      analogWrite(9,30);
+      digitalWrite(10,LOW);
+      digitalWrite(11,HIGH); 
+   }else if( y > 140 && x < 190){ //Fast right Turn
+      analogWrite(6,30);
+      digitalWrite(7,HIGH);
+      digitalWrite(8,LOW);
+      //Right Motor
+      analogWrite(9,30);
+      digitalWrite(10,HIGH);
+      digitalWrite(11,LOW); 
+  }else if(y > 140 && x > 130 && x < 190){ // Very Fast Forward
+         analogWrite(6,30);
+      digitalWrite(7,LOW);
+      digitalWrite(8,HIGH);
+      //Right Motor
+      analogWrite(9,30);
+      digitalWrite(10,HIGH);
+      digitalWrite(11,LOW); 
+  }else if(y < 140 && y > 100 && x < 130){ //Left
+          //Left Motor
+      analogWrite(6,forwardSpeed);
+      digitalWrite(7,LOW);
+      digitalWrite(8,HIGH);
+      //Right Motor
+      analogWrite(9,forwardSpeed);
+      digitalWrite(10,LOW);
+      digitalWrite(11,HIGH);
+  }else if (y < 140 && y > 100 && x > 190){ // Right
+          //Left Motor
+      analogWrite(6,forwardSpeed);
+      digitalWrite(7,HIGH);
+      digitalWrite(8,LOW);
+      //Right Motor
+      analogWrite(9,forwardSpeed);
+      digitalWrite(10,HIGH);
+      digitalWrite(11,LOW); 
+  }else{
+             analogWrite(6,20);
+      digitalWrite(7,LOW);
+      digitalWrite(8,HIGH);
+      //Right Motor
+      analogWrite(9,20);
+      digitalWrite(10,HIGH);
+      digitalWrite(11,LOW); 
   }
+}
 }

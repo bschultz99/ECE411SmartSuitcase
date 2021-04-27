@@ -16,6 +16,7 @@ int PWMMax;
 int PWMTurn;
 int forwardSpeed;
 long area;
+bool sweet;
 
 void setup() {
   Serial.begin(9600);
@@ -44,8 +45,8 @@ void setup() {
   
   //Speeds
   PWMTurn = 25;
-  PWMMin = 10;
-  PWMMax = 20;
+  PWMMin = 20;
+  PWMMax = 100;
 
 
   /*/Pin Settings
@@ -91,7 +92,7 @@ void loop() {
     value=strtok(NULL, " "); //advance to second value
     y = atoi(value); //convert to int and save
     value=strtok(NULL, " "); //advance to third value
-    area = atol(value); //convert to long and save because this value might get more than the max int value: its pixels squared?
+    area = atol(value); //convert to long and save because this value might get more than the max int value: its pixels squared
 /*
     Serial.println(x); //just printing them out to test
     Serial.println(y); //just printing them out to test
@@ -150,15 +151,15 @@ void loop() {
       analogWrite(9,PWMTurn);
       digitalWrite(10,HIGH);
       digitalWrite(11,LOW);
-//    }else{//Float
-//      //Left Motor
-//      analogWrite(6,0);
-//      digitalWrite(7,HIGH);
-//      digitalWrite(8,HIGH);
-//      //Right Motor
-//      analogWrite(9,0);
-//      digitalWrite(10,HIGH);
-//      digitalWrite(11,HIGH);  
+    }else{//Float
+      //Left Motor
+      analogWrite(6,0);
+      digitalWrite(7,HIGH);
+      digitalWrite(8,HIGH);
+      //Right Motor
+      analogWrite(9,0);
+      digitalWrite(10,HIGH);
+      digitalWrite(11,HIGH);  
     }
    }
   }
