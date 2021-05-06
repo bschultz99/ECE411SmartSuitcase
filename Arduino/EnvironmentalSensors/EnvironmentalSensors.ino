@@ -1,12 +1,11 @@
 #include <Wire.h>
 #include "Adafruit_VEML6070.h" //UV Sensor
 #include "Adafruit_SGP30.h" //Gas Sensor
-#include "DHT.h"
+#include "DHT.h" //Temperature and Humidity Sensor
 
-DHT dht(2, DHT11);
-Adafruit_SGP30 sgp;
-
-Adafruit_VEML6070 uv = Adafruit_VEML6070();
+DHT dht(2, DHT11); //Temperature and Humidity Sensor
+Adafruit_SGP30 sgp; //Gas Sensor
+Adafruit_VEML6070 uv = Adafruit_VEML6070(); //UV Sensor
 
 void setup() {
   Serial.begin(9600); //Baud Rate of 9600
